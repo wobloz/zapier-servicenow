@@ -1,16 +1,37 @@
 // We can roll up all our behaviors in an App.
 const incident = require('./triggers/incident');
+const record = require('./triggers/record');
+const table = require('./resources/table');
 
 const authentication = {
 	type: 'basic',
 
 	test: {
-		url: 'https://{{bundle.authData.instance}}.service-now.com/api/now/table/incident?sysparm_limit=1'
+	    url: 'https://{{bundle.authData.instance}}/api/now/table/incident?sysparm_limit=1'
 	},
-	
-	fields: [
-	    {key: 'instance', type: 'string', required: true, helpText: 'ServiceNow instance.'},
-	]
+
+    fields: [
+        {
+            key: 'instance',
+            label: 'ServiceNow Instance Host',
+            helpText: 'Enter a host name of your ServiceNow instance. E.g. acme.service-now.com',
+            type: 'string',
+            required: true
+        },
+        {
+            key: 'username',
+            label: 'Username',
+            helpText: 'ServiceNow user account with sufficient privileges to read ServiceNow meta-data.',
+            type: 'string',
+            required: true
+        },
+        {
+            key: 'password',
+            label: 'Password',
+            type: 'password',
+            required: true
+        }
+    ]
 };
 
 
@@ -34,11 +55,13 @@ const App = {
   // If you want to define optional resources to simplify creation of
 	// triggers, searches, creates - do that here!
   resources: {
+      [table.key]: table
   },
 
   // If you want your trigger to show up, you better include it here!
   triggers: {
-	  [incident.key]: incident
+      [incident.key]: incident,
+      [record.key]: record
   },
 
   // If you want your searches to show up, you better include it here!
