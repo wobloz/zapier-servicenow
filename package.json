@@ -1,0 +1,27 @@
+{
+  "name": "ServiceNowV3",
+  "version": "0.0.1",
+  "description": "ServiceNow app for API V3.",
+  "repository": "zapier/servicenow-v3",
+  "homepage": "http://www.guidevision.co.uk/",
+  "author": "Pavel Muller <pavel.muller@guidevision.cz>",
+  "license": "BSD-3-Clause",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --recursive"
+  },
+  "engines": {
+    "node": ">=4.3.0",
+    "npm": ">=2.0.0"
+  },
+  "dependencies": {
+    "lodash": "4.15.0",
+    "zapier-platform-core": "0.9.5"
+  },
+  "devDependencies": {
+    "babel": "6.5.2",
+    "babel-eslint": "6.1.2",
+    "mocha": "2.5.3",
+    "should": "9.0.2"
+  }
+}
